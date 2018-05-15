@@ -30,11 +30,6 @@ trait BookTraits
     protected $pair;
 
     /**
-     * @var \Magento\Framework\Cache\FrontendInterface
-     */
-    protected $cache;
-
-    /**
      * @var string
      */
     protected $cacheKeyBook;
@@ -117,6 +112,9 @@ trait BookTraits
      */
     public function getBook()
     {
+        if (!isset($this->cache) || !$this->cache instanceOf \Magento\Framework\Cache\FrontendInterface) {
+            throw new Exception('BookTraits requires Frontend Cache Interface.');
+        }
         $isAlive = $this->cache->test($this->getBookCacheKey());
         if (!$isAlive) {
             throw new \Kobens\Core\Exception\ClosedBookException('Market book is closed.');

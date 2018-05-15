@@ -10,7 +10,7 @@ class USD extends AbstractFiat
     const SUB_UNIT = 'Cent';
     const DENOMINATION = 2;
     const CACHE_IDENTIFIER = 'usd';
-    const PAIR_IDENTIFIER = 'usd';
+    const PAIR_IDENTIFIER = 'USD';
 
     /**
      * {@inheritDoc}

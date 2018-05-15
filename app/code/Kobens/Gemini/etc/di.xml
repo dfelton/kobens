@@ -6,7 +6,13 @@
                 <item name="gemini_market_bookkeeper" xsi:type="object">Kobens\Gemini\Console\Command\Market\BookKeeper</item>
                 <item name="gemini_market_ticker" xsi:type="object">Kobens\Gemini\Console\Command\Market\Ticker</item>
                 <item name="gemini_order_list" xsi:type="object">Kobens\Gemini\Console\Command\Order\ListOrder</item>
+                <item name="gemini_strategy_create" xsi:type="object">Kobens\Gemini\Console\Command\Strategy\Create</item>
             </argument>
+        </arguments>
+    </type>
+    <type name="Kobens\Gemini\Console\Command\Strategy\Create">
+        <arguments>
+            <argument name="exchange" xsi:type="object">Kobens\Gemini\Model\Exchange</argument>
         </arguments>
     </type>
     <type name="Kobens\Gemini\Model\Exchange">

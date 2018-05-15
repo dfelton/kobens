@@ -4,6 +4,9 @@ namespace Kobens\Core\Model\Exchange\Pair;
 
 interface PairInterface
 {
+    /**
+     * @return string
+     */
     public function getPairSymbol();
 
     /**

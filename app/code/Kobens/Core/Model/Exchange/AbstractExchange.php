@@ -43,7 +43,7 @@ abstract class AbstractExchange implements ExchangeInterface
             }
             $base = $pair->getBaseCurrency()->getPairIdentity();
             $quote = $pair->getQuoteCurrency()->getPairIdentity();
-            $this->pairs[$base.'/'.$quote] = $pair;
+            $this->pairs[$pair->getPairSymbol()] = $pair;
         }
     }
 

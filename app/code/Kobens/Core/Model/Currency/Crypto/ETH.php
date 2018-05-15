@@ -10,7 +10,7 @@ class ETH extends AbstractCrypto
     const SUB_UNIT = 'Wei';
     const DENOMINATION = 18;
     const CACHE_IDENTIFIER = 'eth';
-    const PAIR_IDENTIFIER = 'eth';
+    const PAIR_IDENTIFIER = 'ETH';
 
 
     /**

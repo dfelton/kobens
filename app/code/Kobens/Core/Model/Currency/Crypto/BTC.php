@@ -10,7 +10,7 @@ class BTC extends AbstractCrypto
     const SUB_UNIT = 'Satoshi';
     const DENOMINATION = 8;
     const CACHE_IDENTIFIER = 'btc';
-    const PAIR_IDENTIFIER = 'btc';
+    const PAIR_IDENTIFIER = 'BTC';
 
     /**
      * {@inheritDoc}
