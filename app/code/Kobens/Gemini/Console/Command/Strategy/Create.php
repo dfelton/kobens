@@ -13,6 +13,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 class Create extends \Symfony\Component\Console\Command\Command
 {
     /**
+     * @var \Kobens\Gemini\Helper\Data
+     */
+    protected $dataHelper;
+
+    /**
      * @var \Kobens\Gemini\Model\ExchangeInterface
      */
     protected $exchange;
@@ -27,6 +32,11 @@ class Create extends \Symfony\Component\Console\Command\Command
      */
     protected $strategyFactory;
 
+    /**
+     * Stores user input params during execution
+     *
+     * @var array
+     */
     protected $params = [
         'pair' => null,
         'open_price' => null,
@@ -44,11 +54,15 @@ class Create extends \Symfony\Component\Console\Command\Command
      */
     public function __construct(
         \Kobens\Gemini\Model\ExchangeInterface $exchange,
+        \Kobens\Gemini\Helper\Data $dataHelper,
         \Kobens\Gemini\Model\ResourceModel\Strategy $strategyResource,
         \Kobens\Gemini\Model\StrategyFactory $strategyFactory,
         $name = 'kobens:gemini:strategy:create'
     ) {
+        $this->dataHelper = $dataHelper;
         $this->exchange = $exchange;
+        $this->strategyResource = $strategyResource;
+        $this->strategyFactory = $strategyFactory;
         parent::__construct($name);
     }
 
@@ -102,7 +116,54 @@ class Create extends \Symfony\Component\Console\Command\Command
      */
     protected function validateParams()
     {
+        $this->dataHelper->isPofitable(
+            $this->getPair(),
+            $this->getOpenPrice(),
+            $this->getOpenAmount(),
+            $this->getClosePrice(),
+            $this->getCloseAmount()
+        );
+        // https://docs.gemini.com/rest-api/#symbols-and-minimums
         throw new \Exception('TODO: '.__METHOD__);
     }
 
+    /**
+     * @return \Kobens\Core\Model\Exchange\Pair\PairInterface
+     */
+    protected function getPair()
+    {
+        return $this->params['pair'];
+    }
+
+    /**
+     * @return string
+     */
+    protected function getOpenPrice()
+    {
+        return $this->params['open_price'];
+    }
+
+    /**
+     * @return string
+     */
+    protected function getOpenAmount()
+    {
+        return $this->params['open_amount'];
+    }
+
+    /**
+     * @return string
+     */
+    protected function getClosePrice()
+    {
+        return $this->params['close_price'];
+    }
+
+    /**
+     * @return string
+     */
+    protected function getCloseAmount()
+    {
+        return $this->params['close_amount'];
+    }
 }
