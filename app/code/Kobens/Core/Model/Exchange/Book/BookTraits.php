@@ -113,7 +113,7 @@ trait BookTraits
     public function getBook()
     {
         if (!isset($this->cache) || !$this->cache instanceOf \Magento\Framework\Cache\FrontendInterface) {
-            throw new Exception('BookTraits requires Frontend Cache Interface.');
+            throw new \Exception('BookTraits requires Frontend Cache Interface.');
         }
         $isAlive = $this->cache->test($this->getBookCacheKey());
         if (!$isAlive) {
